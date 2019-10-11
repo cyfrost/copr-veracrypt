@@ -4,6 +4,8 @@ This is a fork of [bgstack15's veracrypt COPR package](https://gitlab.com/bgstac
 
 COPR builds done [here](https://copr.fedorainfracloud.org/coprs/cyfrost/packages/builds/) and the upstream Veracrypt repo lies [here](https://github.com/veracrypt/VeraCrypt).
 
+WebHook is setup to trigger build on every new commit push (usually done to out a new veracrypt release).
+
 ### Installing Veracrypt on Fedora
 
 The installation instructions can be found [here](https://copr.fedorainfracloud.org/coprs/cyfrost/packages/).
