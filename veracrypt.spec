@@ -73,7 +73,7 @@
 %endif
 
 Name:		veracrypt
-Version:	1.23
+Version:	1.24
 Release:	1
 Summary:	Disk encryption with strong security based on TrueCrypt
 
@@ -220,6 +220,8 @@ fi
 %{_datadir}/icons/hicolor/*/apps/*
 
 %changelog
+* Sun Oct 6 2019 Cyrus Frost <cyrus.frost@hotmail.com>
+ - Update to VeraCrypt v1.24
 * Sun Oct 6 2019 Cyrus Frost <cyrus.frost@hotmail.com>
  - rebuild rpm
 * Wed Sep 26 2018 B Stack <bgstack15@gmail.com> 1.23-1
