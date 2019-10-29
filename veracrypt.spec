@@ -220,7 +220,7 @@ fi
 %{_datadir}/icons/hicolor/*/apps/*
 
 %changelog
-* Sun Oct 29 2019 Cyrus Frost <cyrus.frost@hotmail.com>
+* Tue Oct 29 2019 Cyrus Frost <cyrus.frost@hotmail.com>
  - Update to VeraCrypt v1.24-Hotfix release
 * Sun Oct 11 2019 Cyrus Frost <cyrus.frost@hotmail.com>
  - Update to VeraCrypt v1.24
