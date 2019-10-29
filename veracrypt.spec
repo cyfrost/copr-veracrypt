@@ -73,7 +73,7 @@
 %endif
 
 Name:		veracrypt
-Version:	1.24
+Version:	1.24-Hotfix1
 Release:	1
 Summary:	Disk encryption with strong security based on TrueCrypt
 
