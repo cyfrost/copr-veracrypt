@@ -1,6 +1,6 @@
 %global  pname VeraCrypt
 %global  dummy_package   0
-%global  tarballdir %{name}-%{version}
+%global  tarballdir %{pname}_%{version}-Hotfix1
 %global  srcdir %{tarballdir}/src
 %global  indocdir %{tarballdir}/doc
 %define license_files %{srcdir}/License.txt
@@ -73,14 +73,14 @@
 %endif
 
 Name:		veracrypt
-Version:	1.24.1
-Release:	1
+Version:	1.24
+Release:	2
 Summary:	Disk encryption with strong security based on TrueCrypt
 
 Group:	Applications/File
 License:	Apache License 2.0 and TrueCrypt License 3.0
 URL:		https://www.veracrypt.fr/
-Source0: https://www.veracrypt.fr/code/VeraCrypt/snapshot/VeraCrypt_1.24-Hotfix1.tar.gz
+Source0: https://www.veracrypt.fr/code/%{pname}/snapshot/%{pname}_%{version}-Hotfix1.tar.gz
 
 Packager:	cyfrost <cyrus.frost@hotmail.com>
 %if "%{?wx_toolkit}" != ""
