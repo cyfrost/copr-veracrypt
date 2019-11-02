@@ -1,20 +1,57 @@
-%global  pname VeraCrypt
-%global  dummy_package   0
-%global  tarballdir %{pname}_%{version}-Hotfix1
-%global  srcdir %{tarballdir}/src
-%global  indocdir %{tarballdir}/doc
+%global pname VeraCrypt
+%global dummy_package   0
+%global tarballdir %{pname}_%{version}
+%global srcdir %{tarballdir}/src
+%global indocdir %{tarballdir}/doc
+%global gitcommit_full 6252d96b0de2001b29596715c8f3345cc93324f7
+%global gitcommit %(c=%{gitcommit_full}; echo ${c:0:7})
+%global date 20191031
+%global sourcerepo https://github.com/veracrypt/VeraCrypt
+
 %define license_files %{srcdir}/License.txt
 %define debug_package %{nil}
-
-# lifted from https://copr-be.cloud.fedoraproject.org/results/scx/veracrypt/fedora-27-x86_64/00657099-veracrypt/veracrypt.spec
 %define wx_version_major 3
 %define wx_version_minor 0
 %define wx_version %{wx_version_major}.%{wx_version_minor}
-
 %define force_wx_gtk2 %{nil}
 %define force_wx_gtk2 0
-
 %define wx_name_postfix %{nil}
+
+Name:   veracrypt
+Version:  1.24.1
+Release:  1.%{date}git%{gitcommit}%{?dist}
+Summary:  Disk encryption with strong security based on TrueCrypt
+
+License:  Apache License 2.0 and TrueCrypt License 3.0
+URL:    https://www.veracrypt.fr/
+Source0:  %{sourcerepo}/tarball/%{gitcommit_full}
+
+Packager: cyfrost <cyrus.frost@hotmail.com>
+%if "%{?wx_toolkit}" != ""
+BuildRequires:  compat-wxGTK%{?wx_name_postfix}-%{wx_toolkit}-devel
+%else
+BuildRequires:  wxGTK3-devel
+%endif
+BuildRequires: gcc-c++
+BuildRequires: fuse-devel
+BuildRequires: desktop-file-utils
+BuildRequires: ImageMagick
+BuildRequires: util-linux
+BuildRequires: yasm
+BuildRequires:  ghostscript
+%if 0%{?fedora}
+BuildRequires:  ghostscript-core
+%endif
+
+%description
+VeraCrypt is a free open source disk encryption software for Windows, Mac OSX and Linux. Brought to you by IDRIX (https://www.idrix.fr) and based on TrueCrypt 7.1a.
+
+%global gitcommit_full 6252d96b0de2001b29596715c8f3345cc93324f7
+
+%prep
+%autosetup -n %{gitcommit_full}
+
+
 %if 0%{?wx_version_major} >= 3
   %if 0%{?wx_version_minor} == 0
     %define wx_name_postfix %{wx_version_major}
@@ -72,38 +109,6 @@
   %define doctarget %{_docdir}/%{name}-%{version}
 %endif
 
-Name:		veracrypt
-Version:	1.24
-Release:	2
-Summary:	Disk encryption with strong security based on TrueCrypt
-
-Group:	Applications/File
-License:	Apache License 2.0 and TrueCrypt License 3.0
-URL:		https://www.veracrypt.fr/
-Source0: https://www.veracrypt.fr/code/%{pname}/snapshot/%{pname}_%{version}-Hotfix1.tar.gz
-
-Packager:	cyfrost <cyrus.frost@hotmail.com>
-%if "%{?wx_toolkit}" != ""
-BuildRequires:  compat-wxGTK%{?wx_name_postfix}-%{wx_toolkit}-devel
-%else
-BuildRequires:  wxGTK%{?wx_name_postfix}-devel
-%endif
-BuildRequires: gcc-c++
-BuildRequires: fuse-devel
-BuildRequires: desktop-file-utils
-BuildRequires: ImageMagick
-BuildRequires: util-linux
-BuildRequires: yasm
-BuildRequires:	ghostscript
-%if 0%{?fedora}
-BuildRequires:	ghostscript-core
-%endif
-
-%description
-VeraCrypt is a free open source disk encryption software for Windows, Mac OSX and Linux. Brought to you by IDRIX (https://www.idrix.fr) and based on TrueCrypt 7.1a.
-
-%prep
-%setup -q -c
 
 %build
 %if 0%{wx_version_major} < 3
@@ -214,7 +219,6 @@ fi
 %if !0%{?dummy_package}
 %{_bindir}/%{name}
 %endif
-#%{_docdir}/%{name} # handled by %doc above?
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/*
