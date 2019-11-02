@@ -1,6 +1,6 @@
 %global  pname VeraCrypt
 %global  dummy_package   0
-%global  tarballdir %{name}_%{version}
+%global  tarballdir %{name}-%{version}
 %global  srcdir %{tarballdir}/src
 %global  indocdir %{tarballdir}/doc
 %define license_files %{srcdir}/License.txt
