@@ -73,14 +73,14 @@
 %endif
 
 Name:		veracrypt
-Version:	1.24
-Release:	2
+Version:	1.24-Hotfix1
+Release:	1
 Summary:	Disk encryption with strong security based on TrueCrypt
 
 Group:	Applications/File
 License:	Apache License 2.0 and TrueCrypt License 3.0
 URL:		https://www.veracrypt.fr/
-Source0: https://www.veracrypt.fr/code/%{pname}/snapshot/%{pname}_%{version}-Hotfix1.tar.gz
+Source0: https://www.veracrypt.fr/code/%{pname}/snapshot/%{pname}_%{version}.tar.gz
 
 Packager:	cyfrost <cyrus.frost@hotmail.com>
 %if "%{?wx_toolkit}" != ""
@@ -220,9 +220,11 @@ fi
 %{_datadir}/icons/hicolor/*/apps/*
 
 %changelog
+* Sat Nov 2 2019 Cyrus Frost <cyrus.frost@hotmail.com>
+ - Reupload as 1.24.1
 * Tue Oct 29 2019 Cyrus Frost <cyrus.frost@hotmail.com>
  - Update to VeraCrypt v1.24-Hotfix release
-* Sun Oct 11 2019 Cyrus Frost <cyrus.frost@hotmail.com>
+* Fri Oct 11 2019 Cyrus Frost <cyrus.frost@hotmail.com>
  - Update to VeraCrypt v1.24
 * Sun Oct 6 2019 Cyrus Frost <cyrus.frost@hotmail.com>
  - rebuild rpm
